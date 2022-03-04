@@ -1,3 +1,10 @@
+<?php
+    session_start();
+    if(isset($_SESSION['user'])){
+        header('Location: bemvindo.php');
+    }
+    $erro = '';
+?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -8,22 +15,35 @@
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
-    <div id="exercicios">
-        <h1>Exercicios</h1>
-        <ul>
-            <li>Exercicio 1</li>
-            <li>Exercicio 2</li>
-            <li>Exercicio 3</li>
-        </ul>
+    <div class="form">
+        <b><h1 class="titulo">Login</h1></b>
+        <form method="post" action="">
+            <input type="text" name="utilizador" class="inputs" placeholder="Utilizador">
+            <input type="password"  name="password" class="inputs" placeholder="Palavra-passe">
+            <input type="submit" name="submit" class="btnSubmit" value="Login">
+        </form>
     </div>
 </body>
-
-<style>
-    div#exercicios{
-    list-style-type: none;
-    display: flex;
-    justify-content: space-between;
-}
-</style>
-
 </html>
+
+<?php
+    if(isset($_POST['submit'])){
+        
+        $utilizador = $_POST['utilizador'];
+        $password = $_POST['password'];
+     
+        
+        if(empty($utilizador) || empty($password)){
+            $erro = 'Um ou mais campos vazios!';
+        }else if($utilizador != "admin" || $password != "123"){
+            $erro = 'Utilizador ou palavra-passe errados!';
+        }else if($utilizador == "admin" && $password == "123"){
+            $_SESSION['user'] = $utilizador;
+            header("Location: bemvindo.php");
+            return;
+        }
+        if(!empty($erro)){
+            echo '<span id="erro"> '. $erro .' </span>';
+        }
+    }
+?>

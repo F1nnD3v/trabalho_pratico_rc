@@ -69,3 +69,24 @@ input.btnSubmit:not(:hover){
     text-align: center;
     border: 2px red solid;
 }
+
+ul#exercicios li{
+    list-style-type: none;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-top: 2rem;
+}
+
+ul#exercicios li:hover{
+    font-size: x-large;
+}
+
+ul#exercicios li a {
+    text-decoration: none;
+    color: black;
+}
+
+div.container{
+    font-size: larger;
+}
