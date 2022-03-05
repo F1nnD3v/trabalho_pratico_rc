@@ -1,7 +1,7 @@
 <?php
     session_start();
     if(!isset($_SESSION['user'])){
-        header('index.php');
+        header('Location: index.php');
     }
 ?>
 <!DOCTYPE html>
@@ -15,9 +15,11 @@
 </head>
 <body>
     <?php
-        echo '<div class="navbar">;
-                <h1> Bem vindo/a,'. $_SESSION['user'] . '</h1>
-                <input type="button" name="submit" value="Login">
+        echo '<div class="navbar">
+                <h1> Bem vindo/a, '. $_SESSION['user'] . '</h1>
+                <form action="" method="get">
+                <input type="submit" name="submit" value="Logout">
+                </form>
               </div>';
     ?>
     <div class="container">
@@ -30,3 +32,10 @@
     </div>
 </body>
 </html>
+
+<?php
+    if(isset($_GET['submit'])){
+        session_destroy();
+        header('Location: index.php');
+    }
+?>
