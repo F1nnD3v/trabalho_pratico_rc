@@ -10,7 +10,7 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>Bem-vindo/a</title>
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
@@ -18,7 +18,7 @@
         echo '<div class="navbar">
                 <h1> Bem vindo/a, '. $_SESSION['user'] . '</h1>
                 <form action="" method="get">
-                <input type="submit" name="submit" value="Logout">
+                <input class="btnSubmit" type="submit" name="submit" value="Logout">
                 </form>
               </div>';
     ?>
